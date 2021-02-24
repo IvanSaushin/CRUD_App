@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>CRUD_App</artifactId>
+  <artifactId>CRUD_Security</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>CRUD_App Maven Webapp</name>
+  <name>CRUD_Security Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -19,6 +19,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
 
     <spring.version>5.3.3</spring.version>
+    <spring-security-version>4.0.1.RELEASE</spring-security-version>
   </properties>
 
   <dependencies>
@@ -64,6 +65,23 @@
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-spring5</artifactId>
       <version>3.0.11.RELEASE</version>
+    </dependency>
+
+    <!-- Spring Security -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${spring-security-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${spring-security-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>${spring-security-version}</version>
     </dependency>
 
     <dependency>
@@ -140,7 +158,7 @@
   </dependencies>
 
   <build>
-    <finalName>CRUD_App</finalName>
+    <finalName>CRUD_Security</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
