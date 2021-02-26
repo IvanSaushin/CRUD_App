@@ -1,4 +1,4 @@
-package app.config.controller;
+package app.controller;
 
 import app.dao.UserDao;
 import app.model.User;

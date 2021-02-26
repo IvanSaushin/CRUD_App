@@ -1,4 +1,4 @@
-package app.config.webConfig;
+package app.webConfig;
 
 import net.kaczmarzyk.spring.data.jpa.web.SpecificationArgumentResolver;
 import org.apache.commons.dbcp2.BasicDataSource;

@@ -1,6 +1,6 @@
 package app;
 
-import app.config.webConfig.SpringConfig;
+import app.webConfig.SpringConfig;
 import app.model.User;
 import app.service.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

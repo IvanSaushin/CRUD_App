@@ -1,6 +1,8 @@
 package app.model;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table
@@ -20,6 +22,13 @@ public class User {
     @Column
     private String email;
 
+//    @ManyToMany
+//    @JoinTable(name = "users_roles",
+//                joinColumns = @JoinColumn(name = "user_id"),
+//                inverseJoinColumns = @JoinColumn(name = "role_id"))
+//    public Set<Role> roles;
+
+
     public User() {}
 
     public User(int id, String name, int age, String email) {
@@ -34,6 +43,15 @@ public class User {
         this.age = age;
         this.email = email;
     }
+
+//    public User(String name, int age, String email, Set<Role> roles) {
+//        this.name = name;
+//        this.age = age;
+//        this.email = email;
+//        this.roles = roles;
+//    }
+
+
 
     public int getId() {
         return id;
