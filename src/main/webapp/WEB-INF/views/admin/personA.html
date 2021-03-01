@@ -7,7 +7,7 @@
 <body>
 
 <div th:align="center">
-<!--<br/>-->
+    <!--<br/>-->
 
     <table>
         <tr style="background-color: aliceblue">
@@ -27,6 +27,9 @@
     <table>
         <tr> <td> </td> </tr>
         <tr>
+            <td><a th:href="@{/admin}">Back </a></td>
+            <td width="2"></td>
+            <td><a th:href="@{/admin/{id}/edit(id=${person.getId()})}">Edit</a></td>
             <td><form th:method="DELETE" th:action="@{/admin/{id}(id=${person.getId()})}">
                 <input type="submit" value=" Delete "/>
             </form>

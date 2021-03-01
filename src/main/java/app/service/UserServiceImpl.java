@@ -17,11 +17,6 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     @Autowired
     private UserDao userDao;
 
-    @Override
-    @Transactional
-    public void save(String name, int age, String email) {
-        userDao.save(name, age, email);
-    }
 
     @Override
     @Transactional
@@ -31,8 +26,8 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
     @Override
     @Transactional
-    public void update(int id, String updateName, int updateAge, String updateEmail) {
-        userDao.update(id, updateName, updateAge, updateEmail);
+    public void update(int id, String updateName, int updateAge, String updateEmail, String password) {
+        userDao.update(id, updateName, updateAge, updateEmail, password);
     }
 
     @Override
@@ -44,6 +39,11 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     @Override
     public User getUserByName(String username) {
         return userDao.getUserByName(username);
+    }
+
+    @Override
+    public void setDefaultRole(User user) {
+        userDao.setDefaultRole(user);
     }
 
     @Transactional

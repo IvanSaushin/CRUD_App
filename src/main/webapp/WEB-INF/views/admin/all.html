@@ -16,24 +16,27 @@
 <table>
 
     <tr style="background-color: darkgray">
-        <th>Name</th><th>Age</th> <th>Email</th>
+        <th>Name</th><th>Age</th> <th>Email</th> <th>Roles</th>
     </tr>
     <tr style="background-color: azure" th:each="person : ${people}">
 
-        <td><a th:href="@{/people/{id}(id=${person.getId()})}"
+        <td><a th:href="@{/admin/{id}(id=${person.getId()})}"
            th:text="${person.getName()}"></a></td>
         <td th:text="${person.getAge()}"></td>
         <td th:text="${person.getEmail()}"></td>
+        <td th:text="${person.getRoles()}"></td>
         <td></td>
     </tr>
     <tr> <td> </td></tr>
 
-
 </table>
     <br/>
     <hr/>
-    <a th:align="center" href="people/new">Add user</a>
+    <a th:align="center" href="admin/new">Add user</a>
 
+    <form th:method="post" th:action="@{/logout}">
+        <input type="submit" value="Logout"/>
+    </form>
 </div>
 </body>
 </html>

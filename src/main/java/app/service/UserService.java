@@ -9,11 +9,12 @@ import java.util.List;
 //@Repository
 public interface UserService{
 
+    void setDefaultRole(User user);
+
     List<User> getUsers();
-    void save(String name, int age, String email);
     void save(User user);
     void delete(int id);
-    void update(int id, String updateName, int updateAge, String updateEmail);
+    void update(int id, String updateName, int updateAge, String updateEmail, String password);
     User getOne(int id);
     User getUserByName(String username);
 

@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
 //                .successHandler(new LogicSuccessHandler())
                 .loginProcessingUrl("/login")
+                .successHandler(new LoginSuccessHandler())
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
                 .permitAll()
@@ -40,8 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-//                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/people/**").authenticated()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/people/**").hasAuthority("USER")
                 .anyRequest().authenticated();
     }
 

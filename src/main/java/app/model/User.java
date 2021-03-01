@@ -58,13 +58,6 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-        public User(String name, int age, String email, Set<Role> roles) {
-        this.name = name;
-        this.age = age;
-        this.email = email;
-        this.roles = roles;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
