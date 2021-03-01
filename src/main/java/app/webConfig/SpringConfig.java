@@ -1,6 +1,5 @@
 package app.webConfig;
 
-import net.kaczmarzyk.spring.data.jpa.web.SpecificationArgumentResolver;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -54,6 +53,7 @@ public class SpringConfig implements WebMvcConfigurer {
         templateResolver.setApplicationContext(applicationContext);
 
         templateResolver.setPrefix("/WEB-INF/views/");
+        templateResolver.setCharacterEncoding("UTF-8");
         templateResolver.setSuffix(".html");
         return templateResolver;
     }
@@ -70,6 +70,7 @@ public class SpringConfig implements WebMvcConfigurer {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setCharacterEncoding("UTF-8");
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
@@ -79,9 +80,9 @@ public class SpringConfig implements WebMvcConfigurer {
 //        argumentResolvers.add(new SpecificationArgumentResolver());
 //    }
 
-    @Bean
-    public HandlerMethodArgumentResolver specificationArgumentResolver() {
-        return new SpecificationArgumentResolver(); }
+//    @Bean
+//    public HandlerMethodArgumentResolver specificationArgumentResolver() {
+//        return new SpecificationArgumentResolver(); }
 
 
 //      Database Config

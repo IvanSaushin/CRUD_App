@@ -13,16 +13,11 @@ import java.util.List;
 
 @Component
 @Repository
+//@Transactional
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-
-    @Autowired
-    public UserDaoImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
 
     @Override
     @SuppressWarnings("unchecked")
@@ -48,11 +43,10 @@ public class UserDaoImpl implements UserDao {
     public void save(String name, int age, String email) {
         entityManager.persist(new User(name, age, email));
     }
-
     @Override
     @SuppressWarnings("unchecked")
     @Transactional
-    public void save(User user) { entityManager.persist(user);}
+    public void saveUser(User user) { entityManager.persist(user);}
 
 
     @Override
@@ -68,12 +62,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
+    @Transactional
     public User getOne(int id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
     @SuppressWarnings("unchecked")
+    @Transactional
     public List<User> getUsers() {
         TypedQuery<User> query = entityManager.createQuery("from User", User.class);
         return query.getResultList();
@@ -94,5 +90,11 @@ public class UserDaoImpl implements UserDao {
         entityManager.createQuery("delete from User").executeUpdate();
     }
 
-
+    @Override
+    @SuppressWarnings("unchecked")
+    public User getUserByName(String username) {
+        TypedQuery<User> user = entityManager.createQuery("from User where name =:name", User.class)
+                    .setParameter("name", username);
+        return user.getSingleResult();
+    }
 }

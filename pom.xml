@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>CRUD_Security</artifactId>
+  <artifactId>CRUD-Security</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>CRUD_Security Maven Webapp</name>
+  <name>CRUD-Security</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -19,8 +19,9 @@
     <maven.compiler.target>1.7</maven.compiler.target>
 
     <spring.version>5.3.3</spring.version>
-    <spring-security-version>4.0.1.RELEASE</spring-security-version>
+    <spring-security-version>5.3.8.RELEASE</spring-security-version>
   </properties>
+
 
   <dependencies>
     <dependency>
@@ -97,12 +98,6 @@
       <version>${spring.version}</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/net.kaczmarzyk/specification-arg-resolver -->
-    <dependency>
-      <groupId>net.kaczmarzyk</groupId>
-      <artifactId>specification-arg-resolver</artifactId>
-      <version>2.6.2</version>
-    </dependency>
 
 
     <!--    DATABASE-->
@@ -149,16 +144,11 @@
       <version>2.3.6.RELEASE</version>
     </dependency>
 
-    <!--    <dependency>-->
-<!--      <groupId>org.hibernate.javax.persistence</groupId>-->
-<!--      <artifactId>hibernate-jpa-2.1-api</artifactId>-->
-<!--      <version>1.0.2.Final</version>-->
-<!--    </dependency>-->
 
   </dependencies>
 
   <build>
-    <finalName>CRUD_Security</finalName>
+    <finalName>CRUD-Security</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

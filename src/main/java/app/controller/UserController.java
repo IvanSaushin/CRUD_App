@@ -48,7 +48,7 @@ public class UserController {
 
         try {
             System.out.println(user.toString());
-            userDao.save(user);
+            userDao.saveUser(user);
         } catch (Exception e) {
             System.out.println("failed");
         }

@@ -17,8 +17,12 @@ public class Main {
         UserService userService = context.getBean(UserService.class);
 
 //        UserService userService = new UserServiceImpl();
-        User user = new User("Robert", 40, "barateon@mail.ru");
-        userService.save(user);
+//        User user = new User("Jame", 34, "lanister@mail.ru");
+//        userService.save(user);
+
+        System.out.println(userService.getUserByName("new user"));
+//        System.out.println(userService.getOne(15));
+//        userService.save(user);
 
 //        userService.dropTable();                      //1
 //        userService.createTable();                    //2
@@ -35,7 +39,7 @@ public class Main {
 //
 //        System.out.println(userService.getOne(1));   // 5
 
-        List<User> list = userService.getUsers();     //6
-        list.forEach(System.out::println);
+//        List<User> list = userService.getUsers();     //6
+//        list.forEach(System.out::println);
     }
 }

@@ -3,75 +3,67 @@ package app.model;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
-//@Entity
-//@Table
-public class Role implements GrantedAuthority {
+@Entity
+@Table
+public class Role  implements GrantedAuthority {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-//    @Column(name = "name")
-    private String role;
+    @Column(name = "name")
+    private String name;
+
+    @ManyToMany(mappedBy = "roles")
+    public List<User> users;
+
 
     public Role() {}
 
-    public Role(String role) {
-        this.role = role;
+    public Role(String name) {
+        this.name = name;
     }
 
-    public Role(int id, String role) {
+    public Role(int id, String name) {
         this.id = id;
-        this.role = role;
+        this.name = name;
     }
 
 
-
-    public String getRole() {
-        return role;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String role) {
+        this.name = role;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    @Id
     public int getId() {
         return id;
     }
 
     @Override
-    public String getAuthority() {
-        return role;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        long longId = Double.doubleToLongBits(getId());
-        long longRole = Double.doubleToLongBits(Double.parseDouble(getRole()));
-        result = 17 * result + (int) longId;
-        result = 17 * result + (int) longRole;
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) { return true; }
-        if (getClass() != obj.getClass() || obj==null) {return false;}
-
-        Role role = (Role) obj;
-        return (role.getId() == this.getId() && role.getRole()==((Role) obj).getRole());
-    }
-
-    @Override
     public String toString() {
-        return "Role: " + id + ", role: " + getRole();
+        return getName();
+    }
+
+    @Override
+    public String getAuthority() {
+        return getName();
     }
 }

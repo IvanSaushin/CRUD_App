@@ -1,12 +1,16 @@
 package app.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +26,14 @@ public class User {
     @Column
     private String email;
 
-//    @ManyToMany
-//    @JoinTable(name = "users_roles",
-//                joinColumns = @JoinColumn(name = "user_id"),
-//                inverseJoinColumns = @JoinColumn(name = "role_id"))
-//    public Set<Role> roles;
+    @Column
+    private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles",
+                joinColumns = @JoinColumn(name = "user_id"),
+                inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
 
     public User() {}
@@ -44,14 +51,66 @@ public class User {
         this.email = email;
     }
 
-//    public User(String name, int age, String email, Set<Role> roles) {
-//        this.name = name;
-//        this.age = age;
-//        this.email = email;
-//        this.roles = roles;
-//    }
+    public User(String name, int age, String email, String password) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+    }
 
+        public User(String name, int age, String email, Set<Role> roles) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.roles = roles;
+    }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public int getId() {
         return id;
