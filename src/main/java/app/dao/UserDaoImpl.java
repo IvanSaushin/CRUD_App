@@ -11,7 +11,6 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Component
 @Repository
 public class UserDaoImpl implements UserDao {
 

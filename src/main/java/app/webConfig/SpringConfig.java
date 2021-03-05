@@ -1,4 +1,4 @@
-package app.config.webConfig;
+package app.webConfig;
 
 import net.kaczmarzyk.spring.data.jpa.web.SpecificationArgumentResolver;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -22,8 +22,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.sql.DataSource;
 import java.util.Properties;
 
